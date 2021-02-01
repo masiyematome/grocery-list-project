@@ -1,0 +1,70 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'poppins',sans-serif;
+}
+
+body{
+    background-color : rgb(231, 231, 231);
+}
+
+.main-container{
+    width : 50%;
+    margin : auto;
+    position : relative;
+    top : 50px;
+}
+
+.add-item-container{
+    background-color :  #226089;
+    padding : 25px 15px 35px;
+    position: relative;
+    display : flex;
+    flex-direction: column;
+}
+
+.add-item-container h2{
+    color : white;
+    text-align : center;
+    padding : 0px 0px 15px;
+}
+
+.add-item-container input,.add-item-container button,.display-list-container button{
+    font-size : 1rem;
+    outline : none;
+    border : none;
+}
+
+.add-item-container input{
+    width : 100%;
+    padding : 2px;
+}
+
+.add-item-container button{
+    position: relative;
+    top : 15px;
+    align-self: center;
+    width : 15%;
+}
+
+.display-list-container{
+    position : relative;
+    top : 25px;
+    background-color: #f6ea8c;
+    display: flex;
+    flex-direction: column;
+    padding : 25px 15px;
+}
+
+.display-list-container h2{
+    color: white;
+    align-self: center;
+    padding: 0px 0px 15px;
+}
+
+.display-list-container button{
+    top : 10px;
+    align-self: center;
+    width : 15%;
+}
