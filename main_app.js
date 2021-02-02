@@ -50,4 +50,11 @@ groceryListContainer.addEventListener("click", (event) => {
 
 })
 
+clearListButton.addEventListener("click",() =>{
+    const groceryItems = groceryListContainer.childNodes;
 
+    Array.from(groceryItems).forEach(groceryItem => {
+        groceryItem.remove();
+    })
+
+})
