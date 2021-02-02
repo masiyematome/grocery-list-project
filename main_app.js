@@ -1,3 +1,4 @@
+//Selectors
 
 const groceryListContainer = document.querySelector(".grocery-list-container");
 const groceryItemInput = document.querySelector(".grocery-item-input");
@@ -5,7 +6,10 @@ const addItemButton = document.querySelector(".add-item-button");
 const clearListButton = document.querySelector(".clear-list-button");
 const errorText = document.querySelector(".error-text");
 
+//Functions
+
 addItemButton.addEventListener("click",() => {
+
     if(groceryItemInput.value == ""){
         errorText.classList.add("showing");
 
@@ -32,3 +36,18 @@ addItemButton.addEventListener("click",() => {
         groceryItemInput.value = "";
     }
 })
+
+
+groceryListContainer.addEventListener("click", (event) => {
+    const clickedItem = event.target;
+
+    switch(clickedItem.className){
+        case "delete-button":
+            const theGroceryItem = clickedItem.parentElement;
+            theGroceryItem.remove();
+            break;
+    }
+
+})
+
+
