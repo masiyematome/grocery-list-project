@@ -18,15 +18,19 @@
 
             <h2>Add Grocery Items</h2>
 
-            <input type = "text" class = "grocery-item">
+            <input type = "text" class = "grocery-item-input" placeholder = "Enter item....">
 
-            <button type = "submit" class = "submit-button">Submit</button>
+            <p class = "error-text">Can not add blank grocery item!</p>
+
+            <button type = "submit" class = "add-item-button">Submit</button>
 
         </div>
 
         <div class = "display-list-container">
 
             <h2>Grocery List</h2>
+
+            <div class = "grocery-list-container"></div>
 
             <button class = "clear-list-button">Clear List</button>
 

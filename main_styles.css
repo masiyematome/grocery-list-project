@@ -34,6 +34,18 @@ body{
     font-size : 1rem;
     outline : none;
     border : none;
+    text-align: center;
+}
+
+.error-text{
+    color : rgb(218, 59, 32);
+    align-self: center;
+    padding : 5px;
+    font-size : 1rem;
+}
+
+button{
+    cursor : pointer;
 }
 
 .add-item-container input{
@@ -51,7 +63,7 @@ body{
 .display-list-container{
     position : relative;
     top : 25px;
-    background-color: #f6ea8c;
+    background-color: #facf5a;
     display: flex;
     flex-direction: column;
     padding : 25px 15px;
@@ -67,4 +79,10 @@ body{
     top : 10px;
     align-self: center;
     width : 15%;
+}
+
+.grocery-list-container{
+    background-color : #e4b639;
+    width : 100%;
+    height : 50px;
 }
