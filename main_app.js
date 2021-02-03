@@ -1,10 +1,13 @@
 //Selectors
 
+const displayListContainer = document.querySelector(".display-list-container");
 const groceryListContainer = document.querySelector(".grocery-list-container");
 const groceryItemInput = document.querySelector(".grocery-item-input");
 const addItemButton = document.querySelector(".add-item-button");
 const clearListButton = document.querySelector(".clear-list-button");
 const errorText = document.querySelector(".error-text");
+const editItemContainer = document.querySelector(".edit-item-container");
+const updateItem = document.querySelector(".update-item");
 
 //Functions
 
@@ -47,14 +50,20 @@ addItemButton.addEventListener("click",() => {
 })
 
 
-groceryListContainer.addEventListener("click", (event) => {
+displayListContainer.addEventListener("click", (event) => {
     const clickedItem = event.target;
 
-    switch(clickedItem.className){
-        case "delete-button":
-            const theGroceryItem = clickedItem.parentElement;
-            theGroceryItem.remove();
-            break;
+    if(clickedItem.classList.contains("delete-button")){
+        const theGroceryItem = clickedItem.parentElement.parentElement;
+        theGroceryItem.remove();
+    }
+
+    else if(clickedItem.classList.contains("edit-button")){
+            editItemContainer.classList.add("visible");
+    }
+
+    else if(clickedItem.classList.contains("edit-item-container")){
+        editItemContainer.classList.remove("visible");
     }
 
 })
