@@ -27,10 +27,19 @@ addItemButton.addEventListener("click",() => {
         groceryItemName.innerText = groceryItemInput.value;
         newGroceryItem.appendChild(groceryItemName);
 
+        const buttonsContainer = document.createElement("div");
+        buttonsContainer.classList.add("buttons-container");
+        newGroceryItem.appendChild(buttonsContainer);
+
+        const editButton = document.createElement("button");
+        editButton.classList.add("edit-button");
+        editButton.innerHTML = '<i class = "far fa-edit"></i>';
+        buttonsContainer.appendChild(editButton);
+
         const deleteButton = document.createElement("button");
         deleteButton.classList.add("delete-button");
         deleteButton.innerHTML = '<i class = "fa fa-trash"></i>';
-        newGroceryItem.appendChild(deleteButton);
+        buttonsContainer.appendChild(deleteButton);
 
         groceryListContainer.appendChild(newGroceryItem);
         groceryItemInput.value = "";

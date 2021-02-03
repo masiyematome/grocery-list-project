@@ -108,12 +108,14 @@ button{
     color : snow;
 }
 
-.delete-button {
-    background : transparent;
+.buttons-container button{
+    background-color: transparent;
     padding : 0px 5px;
     color : white;
+    cursor: pointer;
 }
 
-.delete-button .fa{
+.buttons-container i{
     pointer-events: none;
 }
+
