@@ -31,6 +31,8 @@ addItemButton.addEventListener("click",() => {
         groceryItemName.innerText = groceryItemInput.value;
         newGroceryItem.appendChild(groceryItemName);
 
+        saveItemToLocalStorage(groceryItemInput.value);
+
         const buttonsContainer = document.createElement("div");
         buttonsContainer.classList.add("buttons-container");
         newGroceryItem.appendChild(buttonsContainer);
@@ -84,3 +86,21 @@ clearListButton.addEventListener("click",() =>{
     })
 
 })
+
+//Function to save grocery items to local storage
+
+function saveItemToLocalStorage(item){
+    let items;
+
+    if(localStorage.getItem("items") === null){
+        items = [];
+    }
+
+    else{
+        items = JSON.parse(localStorage.getItem("items"));
+    }
+
+    items.push(item);
+    localStorage.setItem("items",JSON.stringify(items));
+
+}
