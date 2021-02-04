@@ -7,6 +7,7 @@ const addItemButton = document.querySelector(".add-item-button");
 const clearListButton = document.querySelector(".clear-list-button");
 const errorText = document.querySelector(".error-text");
 const editItemContainer = document.querySelector(".edit-item-container");
+const newItemName = document.querySelector(".new-item-name");
 const updateItem = document.querySelector(".update-item");
 
 //Functions
@@ -60,6 +61,9 @@ displayListContainer.addEventListener("click", (event) => {
 
     else if(clickedItem.classList.contains("edit-button")){
             editItemContainer.classList.add("visible");
+
+            newItemName.value = clickedItem.parentElement.parentElement.children[0].innerHTML;
+
     }
 
     else if(clickedItem.classList.contains("edit-item-container")){
