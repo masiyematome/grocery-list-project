@@ -64,6 +64,10 @@ displayListContainer.addEventListener("click", (event) => {
 
             newItemName.value = clickedItem.parentElement.parentElement.children[0].innerHTML;
 
+            updateItem.addEventListener("click",() => {
+                clickedItem.parentElement.parentElement.children[0].innerHTML = newItemName.value;
+            })
+
     }
 
     else if(clickedItem.classList.contains("edit-item-container")){
