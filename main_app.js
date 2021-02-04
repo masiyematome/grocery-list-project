@@ -59,6 +59,7 @@ displayListContainer.addEventListener("click", (event) => {
     if(clickedItem.classList.contains("delete-button")){
         const theGroceryItem = clickedItem.parentElement.parentElement;
         theGroceryItem.remove();
+        permanentlyRemoveFromStorage(theGroceryItem);
     }
 
     else if(clickedItem.classList.contains("edit-button")){
@@ -69,6 +70,7 @@ displayListContainer.addEventListener("click", (event) => {
             updateItem.addEventListener("click",() => {
                 clickedItem.parentElement.parentElement.children[0].innerHTML = newItemName.value;
                 saveItemToLocalStorage(newItemName.value);
+
             })
 
     }
@@ -147,3 +149,22 @@ function saveItemToLocalStorage(item){
     })
 
 }();
+
+//Function to permanently delete items from the local storage
+
+function permanentlyRemoveFromStorage(item){
+    let items = [];
+
+    if(localStorage.getItem("items") === null){
+        items = [];
+    }
+
+    else{
+        items = JSON.parse(localStorage.getItem("items"));
+    }
+
+    const itemText = item.children[0].innerText;
+    items.splice(items.indexOf(itemText),1);
+    localStorage.setItem("items",JSON.stringify(items));
+
+}
