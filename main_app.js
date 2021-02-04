@@ -68,6 +68,7 @@ displayListContainer.addEventListener("click", (event) => {
 
             updateItem.addEventListener("click",() => {
                 clickedItem.parentElement.parentElement.children[0].innerHTML = newItemName.value;
+                saveItemToLocalStorage(newItemName.value);
             })
 
     }
@@ -104,3 +105,45 @@ function saveItemToLocalStorage(item){
     localStorage.setItem("items",JSON.stringify(items));
 
 }
+
+//Function to retrieve items from local storage
+
+~function(){
+    let items;
+
+    if(localStorage.getItem("items") === null){
+        items = [];
+    }
+
+    else{
+        items = JSON.parse(localStorage.getItem("items"));
+    }
+
+    items.forEach(item => {
+        const newGroceryItem = document.createElement("div");
+        newGroceryItem.classList.add("new-grocery-item");
+
+        const groceryItemName = document.createElement("h3");
+        groceryItemName.classList.add(".grocery-item-name");
+        groceryItemName.innerText = item;
+        newGroceryItem.appendChild(groceryItemName);
+
+        const buttonsContainer = document.createElement("div");
+        buttonsContainer.classList.add("buttons-container");
+        newGroceryItem.appendChild(buttonsContainer);
+
+        const editButton = document.createElement("button");
+        editButton.classList.add("edit-button");
+        editButton.innerHTML = '<i class = "far fa-edit"></i>';
+        buttonsContainer.appendChild(editButton);
+
+        const deleteButton = document.createElement("button");
+        deleteButton.classList.add("delete-button");
+        deleteButton.innerHTML = '<i class = "fa fa-trash"></i>';
+        buttonsContainer.appendChild(deleteButton);
+
+        groceryListContainer.appendChild(newGroceryItem);
+        groceryItemInput.value = "";
+    })
+
+}();
