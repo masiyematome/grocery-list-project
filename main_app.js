@@ -63,14 +63,18 @@ displayListContainer.addEventListener("click", (event) => {
     }
 
     else if(clickedItem.classList.contains("edit-button")){
+
             editItemContainer.classList.add("visible");
 
             newItemName.value = clickedItem.parentElement.parentElement.children[0].innerHTML;
 
             updateItem.addEventListener("click",() => {
-                clickedItem.parentElement.parentElement.children[0].innerHTML = newItemName.value;
-                saveItemToLocalStorage(newItemName.value);
 
+                permanentlyRemoveFromStorage(clickedItem.parentElement.parentElement.children[0].innerHTML);
+
+                clickedItem.parentElement.parentElement.children[0].innerHTML = newItemName.value;
+                
+                saveItemToLocalStorage(newItemName.value);
             })
 
     }
@@ -86,6 +90,7 @@ clearListButton.addEventListener("click",() =>{
 
     Array.from(groceryItems).forEach(groceryItem => {
         groceryItem.remove();
+        permanentlyRemoveFromStorage(groceryItem);
     })
 
 })
