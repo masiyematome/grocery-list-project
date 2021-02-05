@@ -70,8 +70,6 @@ displayListContainer.addEventListener("click", (event) => {
 
             updateItem.addEventListener("click",() => {
 
-                //The edited code starts here
-
                 const theGroceryItem = clickedItem.parentElement.parentElement;
                 theGroceryItem.remove();
                 permanentlyRemoveFromStorage(theGroceryItem);
@@ -102,16 +100,6 @@ displayListContainer.addEventListener("click", (event) => {
 
                 groceryListContainer.appendChild(newGroceryItem);
             
-
-                //The edited code ends here
-
-
-
-                
-
-                // clickedItem.parentElement.parentElement.children[0].innerHTML = newItemName.value;
-                
-                // saveItemToLocalStorage(newItemName.value);
             })
 
     }
