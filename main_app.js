@@ -70,11 +70,48 @@ displayListContainer.addEventListener("click", (event) => {
 
             updateItem.addEventListener("click",() => {
 
-                permanentlyRemoveFromStorage(clickedItem.parentElement.parentElement.children[0].innerHTML);
+                //The edited code starts here
 
-                clickedItem.parentElement.parentElement.children[0].innerHTML = newItemName.value;
-                
+                const theGroceryItem = clickedItem.parentElement.parentElement;
+                theGroceryItem.remove();
+                permanentlyRemoveFromStorage(theGroceryItem);
+
+                const newGroceryItem = document.createElement("div");
+                newGroceryItem.classList.add("new-grocery-item");
+
+                const groceryItemName = document.createElement("h3");
+                groceryItemName.classList.add(".grocery-item-name");
+                groceryItemName.innerText = newItemName.value;
+                newGroceryItem.appendChild(groceryItemName);
+
                 saveItemToLocalStorage(newItemName.value);
+
+                const buttonsContainer = document.createElement("div");
+                buttonsContainer.classList.add("buttons-container");
+                newGroceryItem.appendChild(buttonsContainer);
+
+                const editButton = document.createElement("button");
+                editButton.classList.add("edit-button");
+                editButton.innerHTML = '<i class = "far fa-edit"></i>';
+                buttonsContainer.appendChild(editButton);
+
+                const deleteButton = document.createElement("button");
+                deleteButton.classList.add("delete-button");
+                deleteButton.innerHTML = '<i class = "fa fa-trash"></i>';
+                buttonsContainer.appendChild(deleteButton);
+
+                groceryListContainer.appendChild(newGroceryItem);
+            
+
+                //The edited code ends here
+
+
+
+                
+
+                // clickedItem.parentElement.parentElement.children[0].innerHTML = newItemName.value;
+                
+                // saveItemToLocalStorage(newItemName.value);
             })
 
     }
