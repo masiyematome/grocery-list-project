@@ -12,6 +12,35 @@ const updateItem = document.querySelector(".update-item");
 
 //Functions
 
+function newItem(itemInput){
+    const newGroceryItem = document.createElement("div");
+    newGroceryItem.classList.add("new-grocery-item");
+
+    const groceryItemName = document.createElement("h3");
+    groceryItemName.classList.add(".grocery-item-name");
+    groceryItemName.innerText = itemInput;
+    newGroceryItem.appendChild(groceryItemName);
+
+    saveItemToLocalStorage(itemInput);
+
+    const buttonsContainer = document.createElement("div");
+    buttonsContainer.classList.add("buttons-container");
+    newGroceryItem.appendChild(buttonsContainer);
+
+    const editButton = document.createElement("button");
+    editButton.classList.add("edit-button");
+    editButton.innerHTML = '<i class = "far fa-edit"></i>';
+    buttonsContainer.appendChild(editButton);
+
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete-button");
+    deleteButton.innerHTML = '<i class = "fa fa-trash"></i>';
+    buttonsContainer.appendChild(deleteButton);
+
+    groceryListContainer.appendChild(newGroceryItem);
+    itemInput = "";
+}
+
 addItemButton.addEventListener("click",() => {
 
     if(groceryItemInput.value == ""){
@@ -23,31 +52,7 @@ addItemButton.addEventListener("click",() => {
     }
 
     else{
-        const newGroceryItem = document.createElement("div");
-        newGroceryItem.classList.add("new-grocery-item");
-
-        const groceryItemName = document.createElement("h3");
-        groceryItemName.classList.add(".grocery-item-name");
-        groceryItemName.innerText = groceryItemInput.value;
-        newGroceryItem.appendChild(groceryItemName);
-
-        saveItemToLocalStorage(groceryItemInput.value);
-
-        const buttonsContainer = document.createElement("div");
-        buttonsContainer.classList.add("buttons-container");
-        newGroceryItem.appendChild(buttonsContainer);
-
-        const editButton = document.createElement("button");
-        editButton.classList.add("edit-button");
-        editButton.innerHTML = '<i class = "far fa-edit"></i>';
-        buttonsContainer.appendChild(editButton);
-
-        const deleteButton = document.createElement("button");
-        deleteButton.classList.add("delete-button");
-        deleteButton.innerHTML = '<i class = "fa fa-trash"></i>';
-        buttonsContainer.appendChild(deleteButton);
-
-        groceryListContainer.appendChild(newGroceryItem);
+        newItem(groceryItemInput.value);
         groceryItemInput.value = "";
     }
 })
@@ -74,39 +79,17 @@ displayListContainer.addEventListener("click", (event) => {
                 theGroceryItem.remove();
                 permanentlyRemoveFromStorage(theGroceryItem);
 
-                const newGroceryItem = document.createElement("div");
-                newGroceryItem.classList.add("new-grocery-item");
-
-                const groceryItemName = document.createElement("h3");
-                groceryItemName.classList.add(".grocery-item-name");
-                groceryItemName.innerText = newItemName.value;
-                newGroceryItem.appendChild(groceryItemName);
-
-                saveItemToLocalStorage(newItemName.value);
-
-                const buttonsContainer = document.createElement("div");
-                buttonsContainer.classList.add("buttons-container");
-                newGroceryItem.appendChild(buttonsContainer);
-
-                const editButton = document.createElement("button");
-                editButton.classList.add("edit-button");
-                editButton.innerHTML = '<i class = "far fa-edit"></i>';
-                buttonsContainer.appendChild(editButton);
-
-                const deleteButton = document.createElement("button");
-                deleteButton.classList.add("delete-button");
-                deleteButton.innerHTML = '<i class = "fa fa-trash"></i>';
-                buttonsContainer.appendChild(deleteButton);
-
-                groceryListContainer.appendChild(newGroceryItem);
+                newItem(newItemName.value);
+                editItemContainer.classList.remove("visible");
+                window.location.reload();
             
             })
 
     }
 
-    else if(clickedItem.classList.contains("edit-item-container")){
-        editItemContainer.classList.remove("visible");
-    }
+    // else if(clickedItem.classList.contains("edit-item-container")){
+    //     editItemContainer.classList.remove("visible");
+    // }
 
 })
 
